@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button"
 import { useMode } from "@/contexts/mode-context"
-import { Menu, X } from "lucide-react"
+import { Menu, X, Briefcase, Squirrel } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
 
 export default function Navigation() {
