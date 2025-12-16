@@ -1,46 +1,11 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { useMode } from "@/contexts/mode-context"
-import { Menu, X, Briefcase, Squirrel } from "lucide-react"
-import { useEffect, useRef, useState } from "react"
+import { Menu, X } from "lucide-react"
+import { useState } from "react"
 
 export default function Navigation() {
-  const { isAnilMode, setIsAnilMode } = useMode()
-  const [isToggling, setIsToggling] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-
-  const audioRef = useRef<HTMLAudioElement | null>(null)
-
-  // Play audio on reload based on mode
-  useEffect(() => {
-    const audioFile = isAnilMode ? "/leo-anil.mp3" : "/leo-professional.mp3"
-    const audio = new Audio(audioFile)
-    audioRef.current = audio
-    audio.play().catch(() => {
-      console.warn("Autoplay might be blocked by browser until user interaction")
-    })
-
-    // Stop after 15 seconds
-    const timer = setTimeout(() => {
-      audio.pause()
-      audio.currentTime = 0
-    }, 15000)
-
-    return () => {
-      clearTimeout(timer)
-      audio.pause()
-      audio.currentTime = 0
-    }
-  }, [isAnilMode]) // runs on reload + mode change
-
-  const handleToggle = () => {
-    setIsToggling(true)
-    setTimeout(() => {
-      setIsAnilMode(!isAnilMode)
-      setIsToggling(false)
-    }, 400)
-  }
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId)
@@ -68,12 +33,8 @@ export default function Navigation() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex-shrink-0 cursor-pointer">
-            <h1
-              className={`text-2xl font-extrabold tracking-tight transition-colors ${
-                isAnilMode ? "text-indigo-500" : "text-blue-600"
-              }`}
-            >
-              {isAnilMode ? "Thalapathy 🎬" : "Prajan Gowtham"}
+            <h1 className="text-2xl font-extrabold tracking-tight text-blue-600">
+              Prajan Gowtham
             </h1>
           </div>
 
@@ -92,48 +53,20 @@ export default function Navigation() {
             </div>
           </div>
 
-          {/* Mode Toggle + Mobile Menu */}
-          <div className="flex items-center space-x-4">
-            {/* Parallel Opposite Transition Toggle */}
-            {/* Toogle Code */}
-              {/* Container for word + icon */}
-              <div className="relative flex w-full items-center">
-                {/* Word */}
-                <span
-                  className={`absolute text-xs font-bold uppercase tracking-wide text-white transition-all duration-700
-                    ${isAnilMode ? "left-4" : "right-4"}
-                  `}
-                >
-                  {isAnilMode ? "Anil" : "Pro"}
-                </span>
-
-                {/* Sliding Icon */}
-                <span
-                  className={`absolute h-9 w-9 rounded-full bg-white shadow-md flex items-center justify-center transition-transform duration-1000 ease-in-out
-                    ${isAnilMode ? "translate-x-[92px]" : "translate-x-0"}
-                    ${isToggling ? "scale-95" : "hover:scale-110"}
-                  `}
-                >
-                  {isAnilMode ? (
-                    <Squirrel className="h-5 w-5 text-indigo-700" />
-                  ) : (
-                    <Briefcase className="h-5 w-5 text-blue-600" />
-                  )}
-                </span>
-              </div>
-            </button>
-
-            {/* Mobile Menu Button */}
-            <div className="lg:hidden">
-              <Button
-                variant="ghost"
-                size="sm"
-                className="rounded-md p-2 hover:bg-gray-100"
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              >
-                {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-              </Button>
-            </div>
+          {/* Mobile Menu Button */}
+          <div className="lg:hidden">
+            <Button
+              variant="ghost"
+              size="sm"
+              className="rounded-md p-2 hover:bg-gray-100"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              {isMobileMenuOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
+            </Button>
           </div>
         </div>
 
