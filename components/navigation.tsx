@@ -1,59 +1,54 @@
-"use client"
+'use client';
 
-import { Button } from "@/components/ui/button"
-import { Menu, X } from "lucide-react"
-import { useState } from "react"
+import { useState } from 'react';
+import { Menu, X } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 export default function Navigation() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId)
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
-    }
-    setIsMobileMenuOpen(false)
-  }
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navItems = [
-    { id: "hero", label: "Home" },
-    { id: "about", label: "About" },
-    { id: "education", label: "Education" },
-    { id: "projects", label: "Projects" },
-    { id: "skills", label: "Skills" },
-    { id: "certifications", label: "Certifications" },
-    { id: "languages", label: "Languages" },
-    { id: "extras", label: "Extras" },
-    { id: "contact", label: "Contact" },
-  ]
+    { id: 'hero', label: 'Home' },
+    { id: 'about', label: 'About' },
+    { id: 'education', label: 'Education' },
+    { id: 'projects', label: 'Projects' },
+    { id: 'skills', label: 'Skills' },
+    { id: 'certifications', label: 'Certifications' },
+    { id: 'languages', label: 'Languages' },
+    { id: 'extras', label: 'Extras' },
+    { id: 'contact', label: 'Contact' },
+  ];
+
+  const scrollToSection = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+    setIsMobileMenuOpen(false);
+  };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-lg">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <h1 className="text-2xl font-extrabold tracking-tight text-blue-600">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b">
+      <div className="max-w-7xl mx-auto px-4">
+        <div className="flex h-16 items-center justify-between">
+          <h1 className="text-xl font-bold text-blue-600">
             Prajan Gowtham
           </h1>
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex space-x-6">
+          <div className="hidden lg:flex gap-6">
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className="text-gray-800 hover:text-blue-600 px-3 py-2 text-sm font-medium transition"
+                className="text-sm font-medium text-gray-700 hover:text-blue-600"
               >
                 {item.label}
               </button>
             ))}
           </div>
 
-          {/* Mobile Menu Button */}
           <div className="lg:hidden">
             <Button
               variant="ghost"
-              size="sm"
+              size="icon"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               {isMobileMenuOpen ? <X /> : <Menu />}
@@ -61,14 +56,13 @@ export default function Navigation() {
           </div>
         </div>
 
-        {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden border-t border-gray-200 bg-white">
+          <div className="lg:hidden border-t">
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className="block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-100"
+                className="block w-full px-4 py-2 text-left hover:bg-gray-100"
               >
                 {item.label}
               </button>
@@ -77,5 +71,5 @@ export default function Navigation() {
         )}
       </div>
     </nav>
-  )
+  );
 }
