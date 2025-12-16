@@ -239,7 +239,7 @@ export default function Certifications() {
             </button>
             <img
               src={selectedMeme}
-              alt="Selected Meme"
+              alt="Selected File"
               className="w-full h-auto rounded-lg"
             />
           </div>
