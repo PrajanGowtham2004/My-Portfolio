@@ -7,15 +7,18 @@ import { Suspense } from "react"
 import { Toaster } from "sonner"
 import "./globals.css"
 
-export const metadata: Metadata = {
+export const metadata = {
   title: "Prajan Gowtham - Portfolio",
   description:
-    "B.Tech Computer Science Engineering | AI/ML Enthusiast | Full Stack Developer",
-  generator: "v0.app",
+    "Official portfolio of Prajan Gowtham, Full Stack Developer and Computer Science Engineer",
   verification: {
     google: "YixObLykn7tYDA27NPk9ybj3rNWCevcuZG5kqleoH58",
   },
-}
+  alternates: {
+    canonical: "https://prajan-gowtham-portfolio.vercel.app/",
+  },
+};
+
 
 export default function RootLayout({
   children,
