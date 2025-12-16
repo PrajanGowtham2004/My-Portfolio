@@ -19,7 +19,7 @@ export default function Certifications() {
         "Comprehensive certification covering TensorFlow fundamentals, neural networks, and deep learning applications.",
       skills: ["TensorFlow", "Deep Learning", "Neural Networks", "Computer Vision"],
       verified: true,
-      meme: "/vijay-13.gif",
+      meme: "../vijay-13.gif",
     },
     {
       title: "Machine Learning",
@@ -29,7 +29,7 @@ export default function Certifications() {
         "Complete machine learning course covering algorithms, supervised and unsupervised learning, and practical applications.",
       skills: ["Machine Learning", "Python", "Algorithms", "Data Science"],
       verified: true,
-      meme: "/vijay-14.gif",
+      meme: "../vijay-14.gif",
     },
     {
       title: "Python Programming",
@@ -39,7 +39,7 @@ export default function Certifications() {
         "Advanced Python programming certification covering data structures, algorithms, and application development.",
       skills: ["Python", "Data Structures", "Algorithms", "Programming"],
       verified: true,
-      meme: "/vijay-15.gif",
+      meme: "../vijay-15.gif",
     },
     {
       title: "Full Stack Development",
@@ -49,7 +49,7 @@ export default function Certifications() {
         "Comprehensive full-stack development skills through hands-on projects and continuous learning.",
       skills: ["MERN Stack", "Next.js", "Full Stack", "Web Development"],
       verified: false,
-      meme: "/vijay-16.gif",
+      meme: "../vijay-16.gif",
     },
   ]
 
