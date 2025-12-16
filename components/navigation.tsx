@@ -95,20 +95,7 @@ export default function Navigation() {
           {/* Mode Toggle + Mobile Menu */}
           <div className="flex items-center space-x-4">
             {/* Parallel Opposite Transition Toggle */}
-            <button
-              onClick={handleToggle}
-              disabled={isToggling}
-              className={`relative inline-flex h-12 w-38 items-center rounded-full px-4 transition-all duration-700 ease-in-out
-                shadow-lg overflow-hidden
-                ${isAnilMode 
-                  ? "bg-gradient-to-r from-indigo-900 via-purple-800 to-indigo-700" 
-                  : "bg-gradient-to-r from-sky-400 via-blue-500 to-cyan-500"
-                }
-                ${isToggling ? "opacity-80" : "hover:scale-105"}
-                focus:outline-none focus:ring-2 focus:ring-offset-2 
-                ${isAnilMode ? "focus:ring-purple-400" : "focus:ring-blue-400"}
-              `}
-            >
+            {/* Toogle Code */}
               {/* Container for word + icon */}
               <div className="relative flex w-full items-center">
                 {/* Word */}
